@@ -1,7 +1,7 @@
 # Note Taker 
 
 ## Purpose
-To help business owners organize their to-do list and schedule
+To help small business owners organize their to-do list and schedule
 
 ## Built With
 * JavaScript
