@@ -13,3 +13,8 @@ https://limitless-waters-39822.herokuapp.com
 
 ## Contribution
 Made by Leigha McKay
+
+## References
+https://youtu.be/Qo71smMMQBc
+
+I referrenced this walkthrough video to assure i was on the right track with my code
