@@ -16,17 +16,17 @@ app.get('/api/notes', (req, res) => {
 });
 
 app.post('/api/notes', (req, res) => {
-    const note = JSON.parse(fs.readFileSync('/db/db.json'))
+    const notes = JSON.parse(fs.readFileSync('/db/db.json'))
     const newNotes = req.body
     newNotes.id = randomUUID();
     notes.push(newNotes)
-    fs.writeFileSync('/db/db.json', JSON.stringify(note))
-    res.json(note)
+    fs.writeFileSync('/db/db.json', JSON.stringify(notes))
+    res.json(notes)
 });
 
 app.delete('/api/notes/:id', (req, res) => {
-    const note = JSON.parse(fs.readFileSync('/db/db.json'))
-    const deleteNote = note.filter((rmvNote) => rmvNote.id != req.params.id)
+    const notes = JSON.parse(fs.readFileSync('/db/db.json'))
+    const deleteNote = notes.filter((rmvNote) => rmvNote.id != req.params.id)
     fs.writeFileSync('/db/db.json', JSON.stringify(deleteNote))
     res.json(deleteNote)
 });
