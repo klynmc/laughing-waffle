@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const express = require('express');
+const { randomUUID } = require('crypto');
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.get('/api/notes', (req, res) => {
 app.post('/api/notes', (req, res) => {
     const notes = JSON.parse(fs.readFileSync('/db/db.json'))
     const newNotes = req.body
+    newNotes.id = randomUUID();
     notes.push(newNotes)
     fs.writeFileSync('/db/db.json', JSON.stringify(notes))
     res.json(notes)
