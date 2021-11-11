@@ -10,6 +10,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
 
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '/public/index.html'))
+});
+
+app.get('/notes', (req, res) => {
+    res.sendFile(path.join(__dirname, '/public/notes.html'))
+});
+
 app.get('/api/notes', (req, res) => {
     res.sendFile(path.join(__dirname, '/db/db.json'))
 });
@@ -27,14 +35,6 @@ app.delete('/api/notes/:id', (req, res) => {
     const deleteNote = notes.filter((rmvNote) => rmvNote.id != req.params.id)
     fs.writeFileSync('./db/db.json', JSON.stringify(deleteNote))
     res.json(deleteNote)
-});
-
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '/public/index.html'))
-});
-
-app.get('/notes', (req, res) => {
-    res.sendFile(path.join(__dirname, '/public/notes.html'))
 });
 
 app.listen(PORT, () => {
